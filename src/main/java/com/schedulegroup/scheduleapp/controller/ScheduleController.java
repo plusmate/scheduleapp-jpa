@@ -2,7 +2,7 @@ package com.schedulegroup.scheduleapp.controller;
 
 import com.schedulegroup.scheduleapp.entity.Schedule;
 import com.schedulegroup.scheduleapp.entity.dto.EditScheduleDto;
-import com.schedulegroup.scheduleapp.entity.dto.ScheduleSaveDto;
+import com.schedulegroup.scheduleapp.entity.dto.SaveScheduleDto;
 import com.schedulegroup.scheduleapp.service.scheduleServ.ScheduleService;
 import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Valid;
@@ -22,7 +22,7 @@ public class ScheduleController {
      * dto를 이용한 일정 생성
      */
     @PostMapping("/new-schedule")
-    public ResponseEntity<String> makeNewSchedule(@Valid @ModelAttribute ScheduleSaveDto saveDto) {
+    public ResponseEntity<String> makeNewSchedule(@Valid @ModelAttribute SaveScheduleDto saveDto) {
         Long savedId = scheduleServ.save(saveDto);
 
         return ResponseEntity.ok(savedId + "번 일정 생성 완료");
@@ -44,6 +44,7 @@ public class ScheduleController {
     @DeleteMapping("/delete")
     public ResponseEntity<String> deleteSchedule(@RequestParam Long id) {
         scheduleServ.deleteById(id);
+
 
         return ResponseEntity.ok(id + "번 일정을 삭제했습니다");
     }
