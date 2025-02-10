@@ -9,7 +9,7 @@ import lombok.Getter;
  */
 @Getter
 @AllArgsConstructor
-public class ScheduleSaveDto {
+public class SaveScheduleDto {
     @NotBlank
     private String name;
 
