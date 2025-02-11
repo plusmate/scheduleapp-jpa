@@ -14,6 +14,7 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/schedule")
 public class ScheduleController {
 
     private final ScheduleService scheduleServ;

@@ -6,6 +6,7 @@ import com.schedulegroup.scheduleapp.entity.dto.SaveScheduleDto;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -24,9 +25,6 @@ public class Schedule {
     private Long id;
 
     @NotBlank
-    private String name;
-
-    @NotBlank
     private  String title;
 
     @NotBlank
@@ -34,6 +32,7 @@ public class Schedule {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
+    @Setter
     private Member member;
 
     /* 현재 시간을 초를 제외한 포멧으로 저장 */
@@ -57,7 +56,6 @@ public class Schedule {
     }
 
     public Schedule editSchedule(EditScheduleDto editDto) {
-        this.name = editDto.getName();
         this.title = editDto.getTitle();
         this.task = editDto.getTask();
 
