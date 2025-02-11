@@ -46,7 +46,6 @@ public class ScheduleController {
     public ResponseEntity<String> deleteSchedule(@RequestParam Long id) {
         scheduleServ.deleteById(id);
 
-
         return ResponseEntity.ok(id + "번 일정을 삭제했습니다");
     }
 

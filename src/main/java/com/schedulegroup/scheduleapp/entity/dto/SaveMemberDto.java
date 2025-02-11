@@ -15,4 +15,7 @@ public class SaveMemberDto {
     @NotBlank
     @Email
     private String email;
+
+    @NotBlank
+    private String password;
 }
