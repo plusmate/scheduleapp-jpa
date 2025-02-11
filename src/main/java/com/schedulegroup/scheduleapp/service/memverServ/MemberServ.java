@@ -14,5 +14,5 @@ public interface MemberServ {
 
     Long editMember(Long id, EditMemberDto dto);
 
-    Long deleteMember(Long id);
+    void deleteMember(Long id);
 }

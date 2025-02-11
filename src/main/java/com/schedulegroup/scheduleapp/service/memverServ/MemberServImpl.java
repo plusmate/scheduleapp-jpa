@@ -48,12 +48,11 @@ public class MemberServImpl implements MemberServ {
     }
 
     @Override
-    public Long deleteMember(Long id) {
+    public void deleteMember(Long id) {
         Member member = findById(id);
 
         scheduleServ.syncMember(member, true);
         memberRepo.deleteById(id);
 
-        return id;
     }
 }
