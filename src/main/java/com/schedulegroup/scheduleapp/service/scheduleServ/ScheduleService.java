@@ -1,5 +1,6 @@
 package com.schedulegroup.scheduleapp.service.scheduleServ;
 
+import com.schedulegroup.scheduleapp.entity.Member;
 import com.schedulegroup.scheduleapp.entity.Schedule;
 import com.schedulegroup.scheduleapp.entity.dto.EditScheduleDto;
 import com.schedulegroup.scheduleapp.entity.dto.SaveScheduleDto;
@@ -13,4 +14,6 @@ public interface ScheduleService {
     void deleteById(Long id);
 
     Schedule editSchedule(EditScheduleDto dto);
+
+    void syncMember(Member member, boolean isDelete);
 }

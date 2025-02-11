@@ -9,6 +9,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -17,6 +18,10 @@ import java.util.Optional;
 public class ScheduleServiceImpl implements ScheduleService{
 
     private final ScheduleRepo scheduleRepo;
+
+    public List<Schedule> findAll() {
+        return scheduleRepo.findAll();
+    }
 
     @Override
     public Long save(SaveScheduleDto saveDto) {
@@ -50,4 +55,24 @@ public class ScheduleServiceImpl implements ScheduleService{
         Schedule schedule = this.findById(id);
         return schedule.editSchedule(dto);
     }
+
+    /**
+     * Member엔티티 변경 / 삭제시, schedule엔티티의 member도 변경 삭제
+     * @param isDelete // true : member엔티티 변경 로직 / false memeber엔티티 삭제 로직
+     */
+    @Override
+    public void syncMember(Member member, boolean isDelete) {
+        for (Schedule schedule : findAll()) {
+            if (schedule.getMember().equals(member)) {
+                if (!isDelete) {
+                    schedule.setMember(member);
+                } else {
+                    Long id = schedule.getId();
+                    scheduleRepo.deleteById(id);
+                }
+            }
+        }
+    }
+
+
 }
