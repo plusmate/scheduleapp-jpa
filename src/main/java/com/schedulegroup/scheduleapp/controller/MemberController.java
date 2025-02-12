@@ -2,8 +2,10 @@ package com.schedulegroup.scheduleapp.controller;
 
 import com.schedulegroup.scheduleapp.entity.Member;
 import com.schedulegroup.scheduleapp.entity.dto.EditMemberDto;
+import com.schedulegroup.scheduleapp.entity.dto.LoginDto;
 import com.schedulegroup.scheduleapp.entity.dto.SaveMemberDto;
 import com.schedulegroup.scheduleapp.service.memverServ.MemberServ;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +23,14 @@ public class MemberController {
         Long savedNumber = memberServ.save(dto);
 
         return ResponseEntity.ok(savedNumber + "번 회원 생성 완료");
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<Member> login(@Valid @ModelAttribute LoginDto dto,
+                                        HttpSession session) {
+        Member loginMember = memberServ.loginCheck(dto);
+        session.setAttribute("loginMember", loginMember);
+        return ResponseEntity.ok().body(loginMember);
     }
 
     @GetMapping("/search/{id}")
