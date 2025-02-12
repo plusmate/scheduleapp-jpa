@@ -11,9 +11,6 @@ import lombok.Getter;
 @AllArgsConstructor
 public class SaveScheduleDto {
     @NotBlank
-    private String name;
-
-    @NotBlank
     private  String title;
 
     @NotBlank

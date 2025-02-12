@@ -40,7 +40,6 @@ public class Schedule {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yy-MM-dd HH:mm")
     private LocalDateTime createdDate;
 
-
     @LastModifiedDate
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yy-MM-dd HH:mm")
     private LocalDateTime modifiedDate;
@@ -55,10 +54,11 @@ public class Schedule {
         this.member = member;
     }
 
-    public Schedule editSchedule(EditScheduleDto editDto) {
-        this.title = editDto.getTitle();
-        this.task = editDto.getTask();
-
-        return this;
+    public void editSchedule(EditScheduleDto editDto) {
+        if (editDto.getTask() != null) {
+            this.task = editDto.getTask();
+        } else if (editDto.getTitle() != null) {
+            this.title = editDto.getTitle();
+        }
     }
 }

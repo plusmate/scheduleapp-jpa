@@ -3,6 +3,7 @@ package com.schedulegroup.scheduleapp.service.memverServ;
 import com.schedulegroup.scheduleapp.entity.Member;
 import com.schedulegroup.scheduleapp.entity.dto.EditMemberDto;
 import com.schedulegroup.scheduleapp.entity.dto.LoginDto;
+import com.schedulegroup.scheduleapp.entity.dto.MemberDto;
 import com.schedulegroup.scheduleapp.entity.dto.SaveMemberDto;
 import com.schedulegroup.scheduleapp.repository.MemberRepo;
 import com.schedulegroup.scheduleapp.service.scheduleServ.ScheduleService;
@@ -29,7 +30,6 @@ public class MemberServImpl implements MemberServ {
         return id;
     }
 
-    @Override
     public Member findById(Long id) {
         Optional<Member> optMember = memberRepo.findById(id);
         if (optMember.isPresent()) {
@@ -40,19 +40,16 @@ public class MemberServImpl implements MemberServ {
     }
 
     @Override
-    public Long editMember(Long id, EditMemberDto dto) {
-        Member member = findById(id);
+    public MemberDto editMember(EditMemberDto dto, Member member) {
         member.editMember(dto);
         scheduleServ.syncMember(member, false);
-
-        return id;
+        return new MemberDto(member);
     }
 
     @Override
-    public void deleteMember(Long id) {
-        Member member = findById(id);
-
+    public void deleteMember(Member member) {
         scheduleServ.syncMember(member, true);
+        Long id = member.getId();
         memberRepo.deleteById(id);
     }
 
