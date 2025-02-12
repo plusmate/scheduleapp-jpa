@@ -1,0 +1,166 @@
+{
+	"info": {
+		"_postman_id": "df80628d-f37a-4ef9-8e0e-a0eaf960da5e",
+		"name": "일정관리",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34720693",
+		"_collection_link": "https://www.postman.com/psejin1478/workspace/jpa/collection/34720693-df80628d-f37a-4ef9-8e0e-a0eaf960da5e?action=share&source=collection_link&creator=34720693"
+	},
+	"item": [
+		{
+			"name": "일정 생성",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "제목6",
+							"type": "text"
+						},
+						{
+							"key": "task",
+							"value": "내용6",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/schedule/new-schedule",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"schedule",
+						"new-schedule"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "내 일정 검색",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/schedule/search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"schedule",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "내 일정 검색(날짜)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "startDate",
+							"value": "2020-02-02",
+							"type": "text"
+						},
+						{
+							"key": "endDate",
+							"value": "2025-04-16",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/schedule/search/date",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"schedule",
+						"search",
+						"date"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "일정 수정",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "제목(수정됨)",
+							"type": "text"
+						},
+						{
+							"key": "task",
+							"value": "할일(수정됨)",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/schedule/edit/16",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"schedule",
+						"edit",
+						"16"
+					],
+					"query": [
+						{
+							"key": "task",
+							"value": "이름(수정됨)",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "일정 삭제",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/schedule/delete/16",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"schedule",
+						"delete",
+						"16"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

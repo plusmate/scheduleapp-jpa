@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class SaveMemberDto {
     @NotBlank
-    @Size(max = 6, message = "이름은 최대65글자까지 가능합니다.")
+    @Size(max = 6, message = "이름은 최대6글자까지 가능합니다.")
     private String name;
 
     @NotBlank
