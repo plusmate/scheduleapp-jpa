@@ -99,8 +99,10 @@ public class ScheduleServiceImpl implements ScheduleService{
      */
     @Override
     public void syncMember(Member member, boolean isDelete) {
-
         List<Schedule> schedules = findByMember(member);
+        if (schedules.isEmpty()) {
+            return;
+        }
         for (Schedule schedule : schedules) {
             if (isDelete) {
                 Long id = schedule.getId();
@@ -122,9 +124,6 @@ public class ScheduleServiceImpl implements ScheduleService{
             if (schedule.getMember().getId().equals(member.getId())) {
                 schedules.add(schedule);
             }
-        }
-        if (schedules.isEmpty()) {
-            throw new RuntimeException("일정이 존재하지 않습니다");
         }
         return schedules;
     }

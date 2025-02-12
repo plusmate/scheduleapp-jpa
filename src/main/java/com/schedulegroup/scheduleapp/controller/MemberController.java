@@ -46,7 +46,7 @@ public class MemberController {
     /**
      * 로그인한 멤버 정보 확인
      */
-    @GetMapping("/search/")
+    @GetMapping("/search")
     public ResponseEntity<MemberDto> searchMyInfo(HttpSession session) {
         Member loginMember = getLoginMember(session);
         MemberDto memberDto = new MemberDto(loginMember);

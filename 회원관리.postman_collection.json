@@ -1,0 +1,187 @@
+{
+	"info": {
+		"_postman_id": "073bbc52-6915-4b80-afd6-e7a6f65f82a4",
+		"name": "회원관리",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34720693",
+		"_collection_link": "https://www.postman.com/psejin1478/workspace/jpa/collection/34720693-073bbc52-6915-4b80-afd6-e7a6f65f82a4?action=share&source=collection_link&creator=34720693"
+	},
+	"item": [
+		{
+			"name": "회원 가입",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "user6",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "user6@user6.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "userpassword6",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/member/new-member",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"member",
+						"new-member"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "로그인",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "user6@user6.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "userpassword6",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/member/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"member",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "로그인 회원 검색",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/member/search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"member",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "회원 수정",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "edit6@edit6.com",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "수정6",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "editPassword",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/member/edit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"member",
+						"edit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "회원 삭제",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/member/delete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"member",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "로그아웃",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/member/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"member",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
