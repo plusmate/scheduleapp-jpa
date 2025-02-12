@@ -33,6 +33,13 @@ public class MemberController {
         return ResponseEntity.ok().body(loginMember);
     }
 
+    @GetMapping("/logout")
+    public ResponseEntity<String> logout(HttpSession session) {
+        session.invalidate();
+
+        return ResponseEntity.ok("로그아웃하였습니다.");
+    }
+
     @GetMapping("/search/{id}")
     public ResponseEntity<Member> searchMemberById(@PathVariable Long id) {
         Member findedMember = memberServ.findById(id);
