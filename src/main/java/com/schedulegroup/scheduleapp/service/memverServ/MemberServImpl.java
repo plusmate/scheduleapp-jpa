@@ -2,6 +2,7 @@ package com.schedulegroup.scheduleapp.service.memverServ;
 
 import com.schedulegroup.scheduleapp.entity.Member;
 import com.schedulegroup.scheduleapp.entity.dto.EditMemberDto;
+import com.schedulegroup.scheduleapp.entity.dto.LoginDto;
 import com.schedulegroup.scheduleapp.entity.dto.SaveMemberDto;
 import com.schedulegroup.scheduleapp.repository.MemberRepo;
 import com.schedulegroup.scheduleapp.service.scheduleServ.ScheduleService;
@@ -53,6 +54,16 @@ public class MemberServImpl implements MemberServ {
 
         scheduleServ.syncMember(member, true);
         memberRepo.deleteById(id);
+    }
 
+    @Override
+    public Member loginCheck(LoginDto dto) {
+        for (Member member : memberRepo.findAll()) {
+            if (member.getEmail().equals(dto.getEmail()) &&
+                    member.getPassword().equals(dto.getPassword())) {
+                return member;
+            }
+        }
+        return null;
     }
 }
