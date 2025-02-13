@@ -75,7 +75,7 @@ public class ScheduleServiceImpl implements ScheduleService{
             Long myId = schedule.getId();
             if (id.equals(myId)) {
                 scheduleRepo.deleteById(id);
-                break;
+                return;
             }
         }
         throw new RuntimeException("해당하는 일정이 없습니다.");
