@@ -9,7 +9,7 @@
 | 5  | 회원 삭제 | `DELETE` | `/member/delete` | 없음 | `회원 삭제 완료` | `200 OK` |
 | 6  | 로그아웃 | `GET` | `/member/logout` | 없음 | `로그아웃하였습니다.` | `200 OK` |
 
-❗ **프로젝트 루트경로에 postman_collection.json 형식의 API포함**
+❗ **프로젝트 루트경로에 postman_collection.json 형식의 API포함**<br>
 ✅ **필수 입력 필드**  
 ❌ **선택 입력 필드**
 
@@ -29,7 +29,7 @@
 | 4  | 일정 수정 | `POST` | `/schedule/edit/{id}` | `title` (text, ✅) <br> `task` (text, ✅) | `{"id":16,"title":"제목6","createdDate":"2025-02-13T02:15:45.909376","modifiedDate":"2025-02-13T02:18:14.357154","name":"user6"}` | `200 OK` |
 | 5  | 일정 삭제 | `DELETE` | `/schedule/delete/{id}` | 없음 | `16번 일정을 삭제했습니다` | `200 OK` |
 
-❗ **프로젝트 루트경로에 postman_collection.json 형식의 API포함**
+❗ **프로젝트 루트경로에 postman_collection.json 형식의 API포함**<br>
 ✅ **필수 입력 필드**  
 ❌ **선택 입력 필드**
 
