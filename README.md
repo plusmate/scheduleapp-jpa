@@ -3,7 +3,7 @@
 | No. | API명 | Method | URL | 요청 데이터 (Form-Data) | 응답 예시 | 상태 코드 |
 |----|------|--------|--------------------|----------------------------|-----------------------------|------------|
 | 1  | 회원 가입 | `POST` | `/member/new-member` | `name` (text, ✅) <br> `email` (text, ✅) <br> `password` (text, ✅) | `16번 회원 생성 완료` | `200 OK` |
-| 2  | 로그인 | `POST` | `/member/login` | `email` (text, ✅) <br> `password` (text, ✅) | `{"name": "user6","email": "user6@user6.com",{"password": "userpassword6"},{"createdDate": "2025-02-13T02:14:21.453445",{"modifiedDate": "2025-02-13T02:14:21.453445"} | `200 OK` |
+| 2  | 로그인 | `POST` | `/member/login` | `email` (text, ✅) <br> `password` (text, ✅) | `{"name": "user6","email": "user6@user6.com",{"password": "userpassword6"},{"createdDate": "2025-02-13T02:14:21.453445",{"modifiedDate": "2025-02-13T02:14:21.453445"}` | `200 OK` |
 | 3  | 로그인 회원 검색 | `GET` | `/member/search` | 없음 | `{"name": "user6","email": "user6@user6.com","password": "userpassword6","createdDate": "2025-02-13T02:14:21.453445","modifiedDate": "2025-02-13T02:14:21.453445"}` | `200 OK` |
 | 4  | 회원 수정 | `POST` | `/member/edit` | `email` (text, ❌) <br> `name` (text, ❌) <br> `password` (text, ❌) | `{"name": "수정6","email": "user6@user6.com","password": "userpassword6","createdDate": "2025-02-13T02:14:21.453445","modifiedDate": "2025-02-13T02:14:21.453445"}` | `200 OK` |
 | 5  | 회원 삭제 | `DELETE` | `/member/delete` | 없음 | `회원 삭제 완료` | `200 OK` |
