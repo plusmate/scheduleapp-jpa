@@ -1,8 +1,28 @@
-# API 명세-회원관리
-| 기능 | Method | URL | formdata | response | 상태코드 |
-| :-: | :-: | :-: | :-: | :-: | :-: |
-| 회원가입 | POST | http://localhost:8080/member/new-member | name:{name}<br>email:{email}<br>password:{password} | id를 제외한 회원 정보 | 200: 정상 조회 |
-| 로그인 | GET | http://localhost:8080/search/{name}/{시작날짜}/{끝날짜}| 검색된 일정 데이터 | 200: 정상 조회 |
-| id를 이용한 검색 | GET | http://localhost:8080/search/{id} | 검색된 일정 데이터 | 200: 정상 조회 |
-| 일정 수정 | POST | http://localhost:8080/edit?id={id}&pw={password}&name={name}&content={할일} | 수정 완료된 일정 데이터 | 200: 정상 조회 |
-| 일정 삭제 | DELETE | http://localhost:8080/delete?id={id}&pw={password} | 삭제 완료 여부 | 200: 정상 조회 |
+## 📌 회원 관리 API 명세서
+
+| No. | API명 | Method | URL | 요청 데이터 (Form-Data) | 응답 예시 | 상태 코드 |
+|----|------|--------|--------------------|----------------------------|-----------------------------|------------|
+| 1  | 회원 가입 | `POST` | `/member/new-member` | `name` (text, ✅) <br> `email` (text, ✅) <br> `password` (text, ✅) | 16번 회원 생성 완료 | `201 Created` |
+| 2  | 로그인 | `POST` | `/member/login` | `email` (text, ✅) <br> `password` (text, ✅) | {"name": "user6","email": "user6@user6.com",{"password": "userpassword6"},{"createdDate": "2025-02-13T02:14:21.453445",{"modifiedDate": "2025-02-13T02:14:21.453445"} | `200 OK` |
+| 3  | 로그인 회원 검색 | `GET` | `/member/search` | 없음 | `{"name": "user6","email": "user6@user6.com","password": "userpassword6","createdDate": "2025-02-13T02:14:21.453445","modifiedDate": "2025-02-13T02:14:21.453445"}` | `200 OK` |
+| 4  | 회원 수정 | `POST` | `/member/edit` | `email` (text, ❌) <br> `name` (text, ❌) <br> `password` (text, ❌) | `{"name": "수정6","email": "user6@user6.com","password": "userpassword6","createdDate": "2025-02-13T02:14:21.453445","modifiedDate": "2025-02-13T02:14:21.453445"}` | `200 OK` |
+| 5  | 회원 삭제 | `DELETE` | `/member/delete` | 없음 | `회원 삭제 완료` | `200 OK` |
+| 6  | 로그아웃 | `GET` | `/member/logout` | 없음 | 로그아웃하였습니다. | `200 OK` |
+
+## 📌 일정 관리 API 명세서
+
+| No. | API명 | Method | URL | 요청 데이터 (Form-Data) | 응답 예시 | 상태 코드 |
+|----|------|--------|--------------------------|-----------------------------|-------------|------------|
+| 1  | 일정 생성 | `POST` | `/schedule/new-schedule` | `title` (text, ✅) <br> `task` (text, ✅) | 17번 일정 생성 완료 | `201 Created` |
+| 2  | 내 일정 검색 | `GET` | `/schedule/search` | {"id":16,"title":"제목6",<"createdDate":"2025-02-13T02:15:45.909376","modifiedDate":"2025-02-13T02:18:14.357154","name":"user6"} |  | `200 OK` |
+| 3  | 내 일정 검색 (날짜) | `POST` | `/schedule/search/date` | `startDate` (text, ✅) <br> `endDate` (text, ✅) | {"id":16,"title":"제목6","createdDate":"2025-02-13T02:15:45.909376","modifiedDate":"2025-02-13T02:18:14.357154","name":"user6"} | `200 OK` |
+| 4  | 일정 수정 | `POST` | `/schedule/edit/{id}` | `title` (text, ✅) <br> `task` (text, ✅) | {"id":16,"title":"제목6","createdDate":"2025-02-13T02:15:45.909376","modifiedDate":"2025-02-13T02:18:14.357154","name":"user6"} | `200 OK` |
+| 5  | 일정 삭제 | `DELETE` | `/schedule/delete/{id}` | 없음 | 16번 일정을 삭제했습니다 | 200 OK |
+
+✅ **필수 입력 필드**  
+❌ **선택 입력 필드**
+
+📌 **상태 코드 설명**
+- `200 OK` : 정상 요청 성공  
+- `400 Bad Request` : 잘못된 요청 (필수 값 누락 등)
+- `401 Unauthorized` : 인증 실패
