@@ -37,3 +37,6 @@
 - `200 OK` : 정상 요청 성공  
 - `400 Bad Request` : 잘못된 요청 (필수 값 누락 등)
 - `401 Unauthorized` : 인증 실패
+
+## 📌 ERD
+![image](https://github.com/user-attachments/assets/80eee075-e062-4161-bf63-ac5cf34b532c)
